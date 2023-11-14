@@ -1,4 +1,4 @@
-  import {SET_TOKEN, SET_USER} from "../actions/userAction";
+import {RESET_USER, SET_TOKEN, SET_USER} from "../actions/userAction";
 
 const initialState = {
     data: null,
@@ -16,6 +16,12 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 data: action.payload
+            }
+        case RESET_USER:
+            return {
+                ...state,
+                data: null,
+                token: null
             }
         default:
             return state;

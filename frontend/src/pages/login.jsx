@@ -1,31 +1,34 @@
 import {useDispatch, useSelector} from "react-redux";
-import {setToken} from "../redux/actions/userAction";
+import {setToken, setUser} from "../redux/actions/userAction";
 import {useState} from "react";
-import signin from "../services/user.service";
+import {fetchUser, signIn} from "../services/user.service";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-
     const dispatch = useDispatch();
-    //const token = useSelector(state => state.user.token)
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-/*            const response = await signin({
+            const response = await signIn({
                 email: email,
                 password: password
             });
             console.log(response);
             if (response.status === 200) {
                 dispatch(setToken(response.body.token));
-            }*/
+                const result = await fetchUser(response.body.token);
+                const profile = await result.body;
+                dispatch(setUser(profile));
+                navigate('/user');
+            }
         } catch(e) {
             console.log(e)
         }
-        //dispatch(setToken("zefzefzezfe"))
     }
 
     return (
