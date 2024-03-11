@@ -26,7 +26,7 @@ const Header = () => {
             </Link>
             <div>
                 {user.data && user.token ? (
-                    <Link to="/login"  onClick={logout} className="main-nav-item">
+                    <Link to="/"  onClick={logout} className="main-nav-item">
                         <i className="fa fa-user-circle"></i>
                         Log out
                     </Link>

@@ -23,3 +23,16 @@ export const fetchUser = async (token) => {
 
     return await response.json();
 }
+
+export const editProfile = async (token, username) => {
+    const response = await fetch("http://localhost:3001/api/v1/user/profile", {
+        method: "PUT",
+        headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({userName: username})
+    })
+    return await response.json();
+}

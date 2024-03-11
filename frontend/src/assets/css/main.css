@@ -276,6 +276,11 @@ body {
   color: #fff;
 }
 
+.editm {margin-bottom: 32px;
+
+}
+
+
 @media (min-width: 720px) {
   .account {
     flex-direction: row;
