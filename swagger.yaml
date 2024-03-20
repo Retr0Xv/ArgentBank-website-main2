@@ -211,12 +211,12 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/accounts/{accountId}/transactions/{transactionsId}/category:
+  
     patch:
       tags:
       - User Transactions
-      summary: Update an existing transaction (category)
-      description: API for updating a transaction's category
+      summary: Update an existing transaction (category and note)
+      description: API for updating a transaction's category and note
       consumes:
       - application/json
       produces:
@@ -242,7 +242,7 @@ paths:
         required: true
         description: Update transaction's informations
         schema:
-            $ref: '#/definitions/TransactionsUpdateCategory'
+            $ref: '#/definitions/Transactions'
       responses:
         '200':
           description: Transaction updated successully
@@ -252,116 +252,7 @@ paths:
           description: Bad request. User ID/ transaction ID must be an integer and larger than 0.
         '500':
           description: Internal Server Error
-    delete:
-      tags:
-      - User Transactions
-      summary: Delete an existing transaction (category)
-      description: API for deleting a transaction's category
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: header
-        name: Authorization
-        description: Attach Bearer JWT token
-        type: string
-        required: true
-      - in: path
-        name: accountId
-        description: User's account ID
-        type: integer
-        required: true
-      - in: path
-        name: transactionsId
-        description: Transaction's ID
-        required: true
-        type: integer
-      responses:
-        '204':
-          description: Transaction delete successully
-          schema:
-            $ref: '#/definitions/TransactionsDeleteCategory'
-        '400':
-          description: Bad request. User ID/ transaction ID must be an integer and larger than 0.
-        '500':
-          description: Internal Server Error
-  /user/accounts/{accountId}/transactions/{transactionsId}/notes:
-    patch:
-      tags:
-      - User Transactions
-      summary: Update an existing transaction (notes)
-      description: API for updating transaction's notes
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: header
-        name: Authorization
-        description: Attach Bearer JWT token
-        type: string
-        required: true
-      - in: path
-        name: accountId
-        description: User's account ID
-        type: integer
-        required: true
-      - in: path
-        name: transactionsId
-        description: Transaction's ID
-        required: true
-        type: integer
-      - in: body
-        name: body
-        required: true
-        description: Update transaction's informations
-        schema:
-            $ref: '#/definitions/TransactionsUpdateNotes'
-      responses:
-        '200':
-          description: Transaction updated successully
-          schema:
-            $ref: '#/definitions/Transactions'
-        '400':
-          description: Bad request. User ID/ transaction ID must be an integer and larger than 0.
-        '500':
-          description: Internal Server Error
-    delete:
-      tags:
-      - User Transactions
-      summary: Delete an existing transaction (notes)
-      description: API for deleting a transaction's notes
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: header
-        name: Authorization
-        description: Attach Bearer JWT token
-        type: string
-        required: true
-      - in: path
-        name: accountId
-        description: User's account ID
-        type: integer
-        required: true
-      - in: path
-        name: transactionsId
-        description: Transaction's ID
-        required: true
-        type: integer
-      responses:
-        '204':
-          description: Transaction delete successully
-          schema:
-            $ref: '#/definitions/TransactionsDeleteCategory'
-        '400':
-          description: Bad request. User ID/ transaction ID must be an integer and larger than 0.
-        '500':
-          description: Internal Server Error 
-    
+   
 securityDefinitions:
   Bearer:
     type: apiKey
